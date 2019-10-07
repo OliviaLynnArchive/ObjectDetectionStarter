@@ -71,3 +71,20 @@ or equivalent for your directory structure.
 * [Beyond Data Science Article](https://towardsdatascience.com/custom-object-detection-for-non-data-scientists-70325fef2dbb): The installation instructions didn't work for me, but the training section seems worth checking out.
 * [Becoming Human Article](https://becominghuman.ai/tensorflow-object-detection-api-tutorial-training-and-evaluating-custom-object-detector-ed2594afcf73): This one has a flowchart, which is pretty cool. Talks about partitioning the training dataset, I think, but I've been skimming so many articles for days so I'm adding this on the list of things to go back and read more fully.
 * [Wiki Article from the OpenCV Github](https://github.com/opencv/opencv/wiki/TensorFlow-Object-Detection-API): Only skimmed this one, too. I'm really just trying to close all my tabs now that I've finished an MVP of this (while keeping a record of the worthwhile-looking ones!)
+
+---
+
+### Next Steps
+* Followed Gilbert's guide for taking, photos, organizing, labeling, making xmls, csvs, the pbtxt, etc. This works up till trying to run the train.py as he describes, because I'm on tf 1.5 and not 1.9
+* From here, switched over to Edje Electronics' guide and downloaded the tf 1.5 model folder that they link
+* I already had my PYTHONPATH configured as they say to--maybe I should add this as an instruction earlier in this guide TODO
+* Compiled protobufs:
+```
+protoc --python_out=. .\object_detection\protos\anchor_generator.proto .\object_detection\protos\argmax_matcher.proto .\object_detection\protos\bipartite_matcher.proto .\object_detection\protos\box_coder.proto .\object_detection\protos\box_predictor.proto .\object_detection\protos\eval.proto .\object_detection\protos\faster_rcnn.proto .\object_detection\protos\faster_rcnn_box_coder.proto .\object_detection\protos\grid_anchor_generator.proto .\object_detection\protos\hyperparams.proto .\object_detection\protos\image_resizer.proto .\object_detection\protos\input_reader.proto .\object_detection\protos\losses.proto .\object_detection\protos\matcher.proto .\object_detection\protos\mean_stddev_box_coder.proto .\object_detection\protos\model.proto .\object_detection\protos\optimizer.proto .\object_detection\protos\pipeline.proto .\object_detection\protos\post_processing.proto .\object_detection\protos\preprocessor.proto .\object_detection\protos\region_similarity_calculator.proto .\object_detection\protos\square_box_coder.proto .\object_detection\protos\ssd.proto .\object_detection\protos\ssd_anchor_generator.proto .\object_detection\protos\string_int_label_map.proto .\object_detection\protos\train.proto .\object_detection\protos\keypoint_box_coder.proto .\object_detection\protos\multiscale_anchor_generator.proto .\object_detection\protos\graph_rewriter.proto .\object_detection\protos\calibration.proto .\object_detection\protos\flexible_grid_anchor_generator.proto
+```
+* Things weren't working, removed pip's brotobuf, then conda-installed protobuf 3.6.0
+* I'd run the python setup.py build/install a couple times while messing with this, idk if it'll be relevant later
+* I also ended up taking away a few of the protoc commands for files that no longer seemed to exist
+* By this point, stopped getting the error where it couldn't find preprocessor pb2 or whatever it specifically was
+* Instead, we get an issue that seems to be related to matplotlib and qt compatibility - is this because we're on matplotlib 2.2.2?
+
