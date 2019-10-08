@@ -1,6 +1,6 @@
 # Object Detection Starter
 ## Installation Instructions
-This was, to put it gently, a Big Mess.
+This was a little messy.
 
 A big part of the problem is the fact that the Tensorflow Object Detection API is not yet compatible with the current version of TensorFlow, version 2.0. This kind of incompatibility problem trickles down to all the dependencies, and many published articles, tutorials, and walkthroughs (or perhaps, only the ones that I unfortunately stumbled upon) list a couple certain versions of tools they use, but default to the most recent versions of other dependencies. 
 
