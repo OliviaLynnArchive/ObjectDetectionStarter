@@ -87,4 +87,6 @@ protoc --python_out=. .\object_detection\protos\anchor_generator.proto .\object_
 * I also ended up taking away a few of the protoc commands for files that no longer seemed to exist
 * By this point, stopped getting the error where it couldn't find preprocessor pb2 or whatever it specifically was
 * Instead, we get an issue that seems to be related to matplotlib and qt compatibility - is this because we're on matplotlib 2.2.2?
+* conda-uninstalled matplotlib, then conda-installed it again (this time it installed as 3.0.0). Now when trying to run `python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training\faster_rcnn_inception_v2_pets.config` we get a different error 
+* As per [this](https://github.com/tensorflow/models/issues/5451), I took out the line about object detection and now train.py is running!
 
