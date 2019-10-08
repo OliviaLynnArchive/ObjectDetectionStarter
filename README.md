@@ -89,4 +89,6 @@ protoc --python_out=. .\object_detection\protos\anchor_generator.proto .\object_
 * Instead, we get an issue that seems to be related to matplotlib and qt compatibility - is this because we're on matplotlib 2.2.2?
 * conda-uninstalled matplotlib, then conda-installed it again (this time it installed as 3.0.0). Now when trying to run `python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training\faster_rcnn_inception_v2_pets.config` we get a different error 
 * As per [this](https://github.com/tensorflow/models/issues/5451), I took out the line about object detection and now train.py is running!
+* While it's training, you can open a new conda prompt in the same directory and type `tensorboard --logdir=training --host 127.0.0.1` to be able to see the graphs (note: the host arg is technically optional, but it didn't work for me without it.)
+
 
